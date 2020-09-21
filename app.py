@@ -1,6 +1,7 @@
 from selenium import webdriver  
 from selenium.webdriver.common.keys import Keys 
 import time
+import sys
 
 class InstaBot:
     def __init__(self,username,password):   #Constructor for InstaBot class
@@ -24,6 +25,7 @@ class InstaBot:
         password.send_keys(Keys.RETURN)
         time.sleep(3)
         
+        
     def like_post(self,hashtag):
         count=0
         bot = self.bot
@@ -38,7 +40,8 @@ class InstaBot:
            
             for link in links:
                 count=count+1
-                if(count<45):
+                print(count)
+                if(True):
                     bot.get(link)
                     try:
                         
@@ -57,6 +60,6 @@ class InstaBot:
 # In InstaBot() here provide your instagram Email or username and Password
 # In like_post() provide the hashtag for which likes must me provided   
                 
-obj = InstaBot('your_username','your_password')
+obj = InstaBot(sys.argv[1],sys.argv[2])
 obj.login()
-obj.like_post('Hashtag_you_want_to_like')
+obj.like_post(sys.argv[3])
